@@ -9,6 +9,7 @@
 # --> Debian
 # --> Ubuntu Server
 # --> Linux Mint
+# --> CentOS
 
 PATH="/bin:/usr/bin:/usr/local/bin"
 
