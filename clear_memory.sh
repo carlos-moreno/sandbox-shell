@@ -12,6 +12,7 @@ PERCENT=80
 
 # Total Memory:
 T_RAM=`grep -F "MemTotal:" < /proc/meminfo | awk '{print $2}'`
+
 # Free memory:
 L_RAM=`grep -F "MemFree:" < /proc/meminfo | awk '{print $2}'`
 
