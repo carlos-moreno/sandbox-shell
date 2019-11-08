@@ -2,8 +2,13 @@
 
 # Name: clear_memory
 # Function: Clear cache memory used on system
-# Author: Carlos Augusto Moreno Ribeiro Junior
+# Author: Carlos Augusto Moreno R. Junior
 # Date: 11-08-2019
+
+# Test environment:
+# --> Debian
+# --> Ubuntu Server
+# --> Linux Mint
 
 PATH="/bin:/usr/bin:/usr/local/bin"
 
