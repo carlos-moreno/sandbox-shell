@@ -1,9 +1,13 @@
 #!/bin/sh
-#!/bin/sh
+
+# Name: clear_memory
+# Function: Clear cache memory used on system
+# Author: Carlos Augusto Moreno Ribeiro Junior
+# Date: 11-08-2019
 
 PATH="/bin:/usr/bin:/usr/local/bin"
 
-# Max PERCENTage
+# Max Percentage
 PERCENT=80
 
 # Total Memory:
@@ -14,7 +18,7 @@ L_RAM=`grep -F "MemFree:" < /proc/meminfo | awk '{print $2}'`
 # RAM used by the system:
 U_RAM=`expr $T_RAM - $L_RAM`
 
-# PERCENTage of RAM used by the system:
+# Percentage of RAM used by the system:
 P_USED=`expr $U_RAM \* 100 / $T_RAM`
 
 echo ================================================================
