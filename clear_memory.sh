@@ -45,6 +45,13 @@ if [ $P_USED -gt $PERCENT ];
     free -m
     echo
     echo ================================================================
+  elif [ $P_USED -lt $PERCENT ];
+    then
+      echo "Task not performed, amount of memory used is within standard.";
+      echo "Percentage of memory to use for task execution: > $PERCENT%"
+      echo ================================================================
+      unset PERCENT T_RAM L_RAM U_RAM P_USED
+      exit $?
   else
     echo "Could not perform task!";
     echo ================================================================
