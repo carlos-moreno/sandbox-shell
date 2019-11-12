@@ -1,5 +1,5 @@
 #!/bin/bash
-######################## INFORMAÇÕES DO SCRIPT ######################################
+########################## SCRIPT INFORMATION #######################################
 # Name: update_postgres_database                                                    #
 # Objective: Kill active connections to the postgres database passed as a parameter #
 #            and restore it with a backup file                                      #
@@ -15,7 +15,7 @@ echo "# Two parameters are required to successfully execute the script:         
 echo "# First parameter: Enter the name of the database.                           #"
 echo "# Second parameter: Enter the location of the backup to be restored.         #"
 echo "#                                                                            #"
-echo "# Example.: bash update_postgres_database.sh database-name backup-path       #"
+echo "# Example: bash update_postgres_database.sh database-name backup-path        #"
 echo "# Note: Backup to restore must be in sql format.                             #"
 echo "##############################################################################"
 echo ""
