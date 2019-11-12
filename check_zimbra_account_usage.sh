@@ -7,6 +7,10 @@
 # Date: 11-11-2019                                                                                             #
 ################################################################################################################
 
+# Test environment:
+# --> Linux Mint
+# --> CentOS
+
 echo "#########################################################################################################"
 echo "# Two parameters are required to successfully execute the script:                                       #"
 echo "# First parameter: Enter a reference date.                                                              #"
