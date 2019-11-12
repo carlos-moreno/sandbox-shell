@@ -37,12 +37,14 @@ if [ $# -lt 2 ];
   	exit 1
 fi
 
+DATE=$(date -d $1 +%s)
+
 
 echo "============================================ ACTIVE ====================================================="
 
 while read line;
 do
-    if [ $(date -d $(echo -e $line | awk '{print $3}') +%s) -ge $1 ];
+    if [ $(date -d $(echo -e $line | awk '{print $3}') +%s) -ge $DATE ];
     then
         echo -e $line >> active_emails.txt
     fi
@@ -56,7 +58,7 @@ echo "============================================ INACTIVE ====================
 
 while read line;
 do
-    if [ $(date -d $(echo -e $line | awk '{print $3}') +%s) -lt $1 ];
+    if [ $(date -d $(echo -e $line | awk '{print $3}') +%s) -lt $DATE ];
     then
         echo -e $line >> inactive_emails.txt
     fi
