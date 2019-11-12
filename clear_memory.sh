@@ -1,20 +1,45 @@
 #!/bin/sh
 
-# Name: clear_memory
-# Function: Clear cache memory used on system
-# Author: Carlos Augusto Moreno R. Junior
-# Date: 11-08-2019
+###################################### SCRIPT INFORMATION ######################################################
+# Name: clear_memory                                                                                           #
+# Function: Clear cache memory used on system                                                                  #
+# Author: Carlos Augusto Moreno R. Junior                                                                      #
+# Date: 11-08-2019                                                                                             #
+# Last Update: 11-12-2019                                                                                      #
+#                                                                                                              #
+# Test environment:                                                                                            #
+# --> Debian                                                                                                   #
+# --> Ubuntu Server                                                                                            #
+# --> Linux Mint                                                                                               #
+# --> CentOS                                                                                                   #
+################################################################################################################
 
-# Test environment:
-# --> Debian
-# --> Ubuntu Server
-# --> Linux Mint
-# --> CentOS
+echo "#########################################################################################################"
+echo "# One parameter are required to successfully execute the script:                                        #"
+echo "# First parameter: Percentage of memory to check.                                                       #"
+echo "#                                                                                                       #"
+echo "# Example: sudo bash clear_memory.sh 80                                                                 #"
+echo "# Note: Administrator access required for better execution.                                             #"
+echo "#########################################################################################################"
+echo ""
 
 PATH="/bin:/usr/bin:/usr/local/bin"
 
+if [ $# -lt 1 ];
+  then
+  	echo "Please enter the parameters correctly!"
+  	if ! [ $1 ];
+      then
+  		  echo "==> Reference Date is required!"
+  	fi
+
+  	echo ""
+  	echo "######################################## End ########################################################"
+  	exit 1
+fi
+
 # Max Percentage
-PERCENT=80
+PERCENT=$1
 
 # Total Memory:
 T_RAM=`grep -F "MemTotal:" < /proc/meminfo | awk '{print $2}'`
