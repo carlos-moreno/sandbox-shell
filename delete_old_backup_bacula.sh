@@ -17,19 +17,17 @@ echo "# First parameter: Bacula Backup Directory                                
 echo "#                                                                                                       #"
 echo "# Example: bash delete_old_backup_bacula.sh /mnt/backup                                                 #"
 echo "# Note: No need to put slash at end when entering backup path for Bacula.                               #"
-echo "#       The commands used to get the file to be deleted use the absolute path.                          #"
-echo "#       To find out the absolute path of the command, use the which command.                            #"
 echo "#########################################################################################################"
 echo ""
 
-PATH=$1
+PATH="/bin:/usr/bin:/usr/local/bin:/usr/sbin"
 
-# Get file without using absolute path to commands
-# FILE=$(echo "list media pool=File" | bconsole | cut -f 3 -d '|' | tail -4 | tr -d " " | grep -v -e "+-----" | head -1)
-FILE=$(echo "list media pool=File" | /usr/sbin/bconsole | /usr/bin/cut -f 3 -d '|' | /usr/bin/tail -5 | /usr/bin/tr -d " " | /bin/grep -v -e "+-----" | /usr/bin/head -1)
+PATH_BACKUP=$1
+
+FILE=$(echo "list media pool=File" | bconsole | cut -f 3 -d '|' | tail -5 | tr -d " " | grep -v -e "+-----" | head -1)
 
 # Delete pool file in Bacula
 echo purge volume=$FILE | bconsole
 
 # Delete file in server backup directory
-rm -f $PATH/$FILE
+rm -f $PATH_BACKUP/$FILE
