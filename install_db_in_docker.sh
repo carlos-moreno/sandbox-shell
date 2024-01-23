@@ -3,26 +3,29 @@
 # ------------------------------------------------------------------------------------------------------
 # Script Name: install_db_in_docker.sh
 # Creation Data: 01/19/2024
+# Modification Date: 01/22/2024
 # Author: Carlos Moreno
-# Revision: 0.1.0
+# Revision: 0.1.1
 # Description: Install and configure Oracle 23c database in Docker
 # Requirement: You need to have docker installed and run the command below
 #              chmod +x install_db_in_docker.sh
 # Example of use: ./install_db_in_docker.sh
 # ------------------------------------------------------------------------------------------------------
 
+database_is_online() {
+    local connection_string=$1
+    docker exec oracle-23c bash -c "sqlplus -s $connection_string << EOF
+      set heading off;
+      set pagesize 0;
+      SELECT 'READY' FROM dual;
+    EOF" > /dev/null 2>&1
+}
+
 echo "Preparing the 'gvenzl/oracle-free:23-slim' container for the appropriate configurations."
 docker run -d --name oracle-23c -p 1521:1521 -e ORACLE_PASSWORD="oracle" gvenzl/oracle-free:23-slim
 
 while true; do
-    docker exec oracle-23c bash -c "sqlplus -s sys/oracle@localhost:1521/freepdb1 as sysdba << EOF
-       set heading off;
-       set pagesize 0;
-       SELECT 'READY'
-        FROM dual;
-    EOF" > /dev/null 2>&1
-
-    if [ $? -eq 0 ]; then
+    if database_is_online "sys/oracle@localhost:1521/freepdb1 as sysdba"; then
         echo -e "Server 'oracle-23c' configured successfully.\n"
         break
     else
