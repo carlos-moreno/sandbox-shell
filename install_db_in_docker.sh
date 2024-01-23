@@ -21,6 +21,7 @@ database_is_online() {
     EOF" > /dev/null 2>&1
 }
 
+
 echo "Preparing the 'gvenzl/oracle-free:23-slim' container for the appropriate configurations."
 docker run -d --name oracle-23c -p 1521:1521 -e ORACLE_PASSWORD="oracle" gvenzl/oracle-free:23-slim
 
