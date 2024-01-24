@@ -2,10 +2,10 @@
 
 # ------------------------------------------------------------------------------------------------------
 # Script Name: install_db_in_docker.sh
-# Creation Data: 01/19/2024
+# Creation Date: 01/19/2024
 # Modification Date: 01/22/2024
 # Author: Carlos Moreno
-# Revision: 0.1.1
+# Revision: 0.1.2
 # Description: Install and configure Oracle 23c database in Docker
 # Requirement: You need to have docker installed and run the command below
 #              chmod +x install_db_in_docker.sh
