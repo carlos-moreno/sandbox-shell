@@ -58,8 +58,7 @@ date
 echo
 echo "Memory Used: $P_USED %";
 
-if [ $P_USED -gt $PERCENT ];
-  then
+if [ $P_USED -gt $PERCENT ]; then
     DATE=`date`
     echo $DATE >> /var/log/memoria.log
     echo "Memory Used: $P_USED %" >> /var/log/memoria.log
@@ -69,26 +68,23 @@ if [ $P_USED -gt $PERCENT ];
     # Dropping cache:
     echo 3 > /proc/sys/vm/drop_caches
 
-    for i in {`cat /etc/os-release | grep -e "^ID" | awk -F "=" '{print $2}'`};
-    do
-      if [ $i == "debian" ] || [ $i == "ubuntu" ];
-      then
-        sysctl -w vm.drop_caches=3
-      fi
+    for i in {`cat /etc/os-release | grep -e "^ID" | awk -F "=" "{print $2}"`}; do
+        if [ $i == "debian" ] || [ $i == "ubuntu" ]; then
+            sysctl -w vm.drop_caches=3
+        fi
     done
 
     echo
     free -m
     echo
     echo ================================================================
-  elif [ $P_USED -lt $PERCENT ];
-    then
-      echo "Task not performed, amount of memory used is within standard.";
-      echo "Percentage of memory to use for task execution: > $PERCENT%"
-      echo ================================================================
-      unset PERCENT T_RAM L_RAM U_RAM P_USED
-      exit $?
-  else
+elif [ $P_USED -lt $PERCENT ]; then
+    echo "Task not performed, amount of memory used is within standard.";
+    echo "Percentage of memory to use for task execution: > $PERCENT%"
+    echo ================================================================
+    unset PERCENT T_RAM L_RAM U_RAM P_USED
+    exit $?
+else
     echo "Could not perform task!";
     echo ================================================================
     unset PERCENT T_RAM L_RAM U_RAM P_USED
