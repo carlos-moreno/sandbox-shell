@@ -1,4 +1,5 @@
 #!/bin/bash
+
 ########################## SCRIPT INFORMATION #######################################
 # Name: update_postgres_database                                                    #
 # Objective: Kill active connections to the postgres database passed as a parameter #
